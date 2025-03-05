@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex"><!--練習用サイトのため、検索結果に表示させない-->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="description" content="架空の旅館、嬬恋村温泉旅館あさまの宿のホームページ。お部屋や食事を紹介。気軽に来て、ちょっとくつろいで、温まる温泉旅館です">
+    <title>嬬恋村温泉旅館あさまの宿（練習用架空サイト）</title>
+    <link rel="stylesheet" href="css/normalize.css"><!--ブラウザ種類ごとの違いをなくす https://necolas.github.io/normalize.css/ -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- for Webフォント(Google Fonts "Noto Sans Japanese" and "Noto Serif Japanese") -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
+</head>
+<body class="home">
+<header>
+    <h1><a href="index.html"><img src="images/logo.png" alt="嬬恋村温泉旅館あさまの宿（練習用架空サイト）"></a></h1>
+    <nav><ul>
+        <!--li><a href="index.html">HOME</a></li-->
+        <li><a href="room.html">お部屋</a></li>
+        <li><a href="meal.html">お食事</a></li>
+        <li><a href="onsen.html">温泉</a></li>
+        <li><a href="kankou.html">周辺観光</a></li>
+        <li class="linkannounce"><a href="index.html#announce">お知らせ</a></li>
+        <li class="linkaccess"><a href="index.html#access">アクセス</a></li>
+        <li><a href="tel:027X-00-9999">ご予約☎ <span>027X-00-9999</span></a></li><!--「ご予約☎」と電話番号を一つのliに入れるのは、last-childとしてスマホ表示時に別行にするため-->
+    </ul></nav>
+</header>
+<main>
+    <a href="#" class="to_top"><img src="images/to_top.gif" alt="先頭にスクロールする"></a>
+    <div class="visual">
+        <img src="images/catchcopy.png" alt="気軽に来て、ちょっとくつろいで、温まる"><p>源泉かけ流し露天風呂</p>
+        <!--気軽に来て、ちょっとくつろいで、温まる(画像に重ねるコピー)-->
+    </div>
+    <!--文字をスクロールさせようとしたが、写真サイズを可変にする処理と合わず断念
+    div class="kasaneru_ugoku_tate">
+        <img src="images/onsen_ao_1600x640.jpg"/>
+        <p>気軽に来て、<br>ちょっとくつろいで、<br>温まる</p>
+    </div-->
+    <div class="inner">
+        <section>
+            <div>
+                <!--hr-->
+                <h2>お部屋</h2>
+                <div class="setsumei">
+                    <img src="images/room0.jpg" alt="room image">
+                    <p>日常を忘れ、四季折々の自然を愉しみながら、のんびりとくつろげる和室をご用意しています。</p>
+                    <a class="to_detail" href="room.html">お部屋一覧</a>
+                </div>
+            </div>
+            <img src="images/room0.jpg" alt="room image" class="section_img">
+        </section>
+        <section>
+            <div>
+                <!--hr-->
+                <h2>お食事</h2>
+                <div class="setsumei">
+                    <img src="images/meal0.jpg" alt="meal image">
+                    <p>夕食はA5 ランク飛騨牛ステーキと飛騨ふぐのせいろ蒸しをご用意。朝食は、ご要望のお客様には洋風もご用意。</p>
+                    <a class="to_detail" href="meal.html">お食事詳細</a>
+                </div>
+                <div  class="smallphoto">
+                    <!--p><img src="images/asa_wa_bokasi.png" alt="朝食例"></p-->
+                    <span class="blur"><img src="images/asa_wa.jpg" alt="朝食例"></span>
+                    <span class="blur"><img src="images/asa_you.jpg" alt="洋風朝食例"></span>
+                </div>
+            </div>
+            <img src="images/meal0.jpg" alt="meal image" class="section_img">
+        </section>
+        <section>
+            <div>
+                <!--hr-->
+                <h2>温泉</h2>
+                <div class="setsumei">
+                    <img src="images/onsen0.jpg" alt="内風呂">
+                    <p>源泉かけ流しの温泉でゆったり。解放感あふれる露天風呂と、雪見もできる明るい内風呂があります。</p>
+                    <a class="to_detail" href="onsen.html">温泉詳細</a>
+                </div>
+                <div  class="smallphoto">
+                    <span class="blur"><img src="images/onsen_soto1.jpg" alt="露天風呂"></span>
+                </div>
+            </div>
+            <img src="images/onsen0.jpg" alt="内風呂" class="section_img">
+        </section>
+        <section>
+            <div>
+                <!--hr-->
+                <h2>周辺観光</h2>
+                <div class="setsumei">
+                    <img src="images/kankou0.jpg" alt="浅間牧場">
+                    <p>浅間山、鬼押し出し、吾妻渓谷など、宿の周辺には、をはじめ、魅力的なスポットがたくさんあります。</p>
+                    <a class="to_detail" href="kankou.html">あさまの宿周辺の観光</a>
+                </div>
+                <div  class="smallphoto">
+                    <span class="blur"><img src="images/kankou_azuma.jpg" alt="吾妻渓谷"></span>
+                    <span class="blur"><img src="images/onioshi.jpg" alt="鬼押し出し"></span>
+                </div>
+            </div>
+            <img src="images/kankou0.jpg" alt="浅間牧場" class="section_img">
+        </section>
+        <div id="announce"></div>
+        <hr>
+        <h2>お知らせ</h2>
+        <dl class="oshirase">
+            <dt>2022/06/30</dt>
+            <dd>露天風呂の工事が終了しました。通常通りご利用いただけます。</dd>
+            <dt>2022/04/20</dt>
+            <dd>地震の影響はありません。通常通り営業しています</dd>
+            <dt>2022/03/15</dt>
+            <dd><a href="error.html">春のキャンペーン実施中！お気軽にご連絡ください</a></dd>
+        </dl>
+        <div id="access"></div>
+        <hr>
+        <h2>アクセス</h2>
+        <div class="access_box">
+            <div class="access_box_bun">
+                <dl>
+                    <dt>お車でお越しの方</dt>
+                    <dd>国道406 号線笹平交差点を浅間白根火山ルート方面に曲がり2km</dd>
+                    <dt>電車でお越しの方</dt>
+                    <dd>JR 吾妻線万座・鹿沢駅より鬼押し出し行きバスで20 分、米原バス停で下車200m( 徒歩３分)</dd>
+                </dl>
+            </div>
+            <div class="access_box_map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10784.6519980867!2d138.55309454642426!3d36.522847291346366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601dc32e3d4da5b9%3A0x8d1560fe5bb2020f!2z44Ob44K_44Or55-z!5e0!3m2!1sja!2sjp!4v1739334472961!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<footer>
+    <p class="telme"><a href="tel:027X-00-9999">ご予約は電話にて承ります</a></p>
+    <p class="ourname">温泉旅館あさまの宿（架空の宿）</p>
+    <div class="footer_contents">
+        <table class="address">
+            <tr><td>住所</td><td>〒377-1524 群馬県吾妻郡嬬恋村米原892</td></tr>
+            <tr><td>電話<small>(ご予約)</small></dt><td><a href="tel:027X-00-9999">027X-00-9999</a></td></tr>
+            <tr><td>メール</td><td><a href="mail:asamanoyado@mmail.com">asamanoyado@mmail.com</a></td></tr>
+        </table>
+        <div class="sns">
+            <ul>
+                <li><img src="images/icon-rainbow-insta2.png"><a href="error.html">Instagram</a></li>
+                <li><img src="images/icon-rainbow-twitter2.png"><a href="error.html">X(Twitter)</a></li>
+                <li><img src="images/icon-rainbow-fb3.png"><a href="error.html">Facebook</a></li>
+            </ul>
+        </div>
+    </div>
+    <ul>
+        <li><a href="material.html">本サイトで利用している写真・アイコン</a></li>
+        <li><a href="error.html">プライバシーポリシー（未作成）</a></li>
+    </ul>
+    <p class="copyright"><small>&copy; KASE Atsushi</small></p> <!--サイトの最後であることを感覚的にわかりやすくするには右に配置する-->
+</footer>
+</body>
+</html>
