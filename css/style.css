@@ -1,0 +1,627 @@
+@charset "UTF-8";   /* contentやコメントに日本語を使うため */
+/* 配色
+    #250d00 黒檀（メインカラー）
+    #87573E 二段明るい（彩度低い・少し赤い）
+    #705343 二段明るい（彩度低い）
+    #543625 少し明るい（トーン・オン・トーンで選定）
+    #CFBAAF #705343のHSL輝度を下げたもの。背景が黒檀のときの文字用
+    参考：https://www.color-sample.com/colors/250d00/ */
+html {
+    scroll-behavior: smooth;    /* 「トップへ戻る」クリック時に少し時間をかけてスクロールさせるため。他の影響不明 */
+}
+body {
+    line-height: 1.7;
+    font-size: 16px;
+    font-family: "Noto Serif JP", serif;
+    /* font-family: "Yu Mincho","Hiragino Mincho Pro",serif;
+    /* font-family: ,-apple-system, BlinkMacSystemFont, "Helvetica Neue", "游ゴシック Medium", YuGothic, YuGothicM, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif; */
+    color: #000
+}
+
+a,
+a:link {
+    color: #87573E;    /* #3585b7　c9ac9c; */
+}
+a:visited {
+    color: #CFBAAF;    /* #6252b7　c9ac9c; */
+}
+a:hover {
+    text-decoration: none;
+    color: #555;
+}
+
+hr {
+    border-width: 3px 0 0 0; /* 線の太さを指定 */
+    border-style: solid; /* dashed:破線  参考： https://www.tohoho-web.com/css/prop/border-style.htm */
+    border-color: #250d00; /*線の色を指定 */
+}
+.blur, .blur > img {
+    margin: 0; padding: 0;
+    border: 0;
+}
+.blur {
+    position: relative;
+    display: inline-block;
+    font-size: 0;
+    line-height: 0;
+    /* background-color: #f00; */
+}
+.blur:after {
+    position: absolute;
+    left: 0; top: 0; right: 0; bottom: 0;
+    box-shadow: inset 0px 0px 10px 10px #fff;
+    content: " ";
+}
+/*@media screen and (max-width:767px) { トップバーの文字サイズを変更する場合は main のマージンも合わせて変更する必要あり 
+    body {
+        font-size: 15px;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}*/
+
+/* header */
+header {
+    display: flex;
+    z-index: 90;
+    background: #250d00;
+    position: fixed;        /* トップバーを固定する（スクロールさせない）。 */
+    top: 0;                 /* 固定位置はページの先頭 */
+    width: 100%;            /* トップバーを固定させた場合に左寄せさせない */
+    /*height: 130px;*/
+}
+header h1 {
+    margin: 3px 0 0 20px;
+}
+header nav {
+    margin: 0 0 0 auto; /* 右に寄せる（左のマージンを最大にする） */
+}
+header nav ul {
+    list-style-type: none; /* リストの先頭「・」を表示しない */
+    margin: 8px 0;
+    padding: 0;
+    display: flex; /* 横並びにする */
+}
+header nav ul li {
+    padding: 12px 6px;/*15px*/
+    /*padding: 13px 0.01% 13px 0;/**/
+    line-height: 1.1em; /* 幅の狭い端末ではメニューの文字が改行される。その高さ */
+}
+
+header nav ul a,
+header nav ul a:link,
+header nav ul a:visited {
+    display: block; /* クリック可能エリアを文字だけでなくブロック全体に拡大する <-> inline */
+    /*padding: 10px 15px;  "header nav ul li "に移動 */
+    text-decoration: none;
+    color: #fff;
+    transition: 0.4s linear;    /* 変化時のアニメーション */
+}
+header nav ul a:hover,      /* マウスをのっけた瞬間 */
+header nav ul a:active {    /* クリック後、画面遷移するまで */
+        /*color: #888;*/
+    /*text-decoration:underline;*/
+    transform: translate(0,-5px); /* 少し上に移動 rotate(180deg)：反転;*/
+}
+header nav ul li:last-child {
+    background: #87573E;
+    color: #fff;
+}
+header .linkannounce {
+    margin-left: 10px;
+    background: #543625;   
+}
+header .linkaccess {
+    background: #543625;   
+}
+@media screen and (max-width:910px) {
+    header {
+        display: block;
+    }
+    header h1 {
+        margin:0px 0 0;        /* 上につめる */
+        text-align: center;     /* 中央ぞろえ */
+    }
+    /*画像が小さくなりすぎる
+    header h1 img {
+        width: 150px;
+    }*/
+    header nav ul {
+        margin: 0;
+        flex-wrap: wrap;    /* 無理やり１行に収めず、はみ出たら折り返して下段に表示 */
+    }
+    header nav ul li {
+        box-sizing: border-box; /* 幅をcontentsではなく、border含めた全体で指定とする */
+        width: 17%;     /* １項目の幅 */
+        text-align: center;     /* 中央ぞろえ */
+        padding: 10px 6px;/*15px*/
+    }
+    header nav ul li:last-child {
+        width: 100%;     /* １項目の幅 */
+        /* background: #50240d;
+        color: #ad9182; aタグが優先される */
+    }
+    header .linkannounce {
+        margin-left: 0px;
+        width: 16%;     /* １項目の幅 */
+    }
+    header .linkaccess {
+        width: 16%;     /* １項目の幅 */
+    }
+}
+/*@media screen and (max-width:605px) {
+    header nav ul li {
+        width: 16%;      １項目の幅 *//*
+    }
+    header nav ul li:last-child {
+        width: 100%;     /* １項目の幅 */
+        /* background: #50240d;
+        color: #ad9182; aタグが優先される *//*
+    }
+}*/
+
+/* footer */
+footer {
+    background: #250d00;
+    color: #fff;
+    padding: 20px;
+}
+footer .telme {
+    margin-block-start: 2px;
+    text-decoration:underline;
+    font-weight: bold;
+}
+footer .ourname {
+    /*font-family: serif; */
+    font-size: 42px;
+    margin-block-start: 0px;
+    margin-block-end: 30px; /* paddingでもmarginでもよさそうだが*/
+    /*padding: 0 0 30px 0;    /*  */
+    /*margin: 0 0 30px 0;     /*  */
+}
+footer .footer_contents {
+    display: flex; /* 横並びにする */
+    margin-block-end: 20px; /* paddingでもmarginでもよさそうだが*/
+    /*padding: 0 0 30px 0;    /*  */
+    /*margin: 0 0 30px 0;     /*  */
+}
+footer .address{
+    margin: 0 0 0 5%;
+    padding: 0;
+    width: 70%;
+}
+
+/* 連絡先 */
+footer table {
+    border-spacing: 0px;
+    /* border-collapse: collapse; collapse:隣接するセルの枠線を重ねる separate:枠線の間隔を空ける */
+}
+footer td {
+    padding: 0;
+    height: 10px;   /* ←効かない。なぜ？ */
+    min-width: 83px; /* こちらは効く。「電話(ご予約)」に折り返しが発生しないように設定値を決めた */
+}
+/* footer dt {
+    float: left; 左に浮遊させることで dd コンテンツを右に回り込ませる */
+    /* clear: both; dt 要素自体は回り込ませない */
+    /* padding: 10px 0; 上下に余白
+    width: 20%;
+}
+footer dd {
+    width: 80%;
+} */
+
+footer .sns{
+    /*justify-content: center;  ←効かない　　配置を真ん中に */
+    margin: 0px auto;  /* 左右のマージンを auto にすることでセンタリングされる */
+}
+footer .sns img {
+    width: 24px;
+    /*padding-right: 10px;*/
+    padding: 0 10px 0 0;
+    /*margin: 0 8px 0 0;*/
+}
+footer ul {
+    list-style-type: none; /* リストの先頭「・」を表示しない */
+    margin-block-start: 0;      /* デフォルトが 1em のため（上が空いてしまう） */
+    padding-inline-start: 0px;  /* デフォルトが 40px のため（左が空いてしまう） */
+}
+footer > ul {   /* 「サイトマップ」「プロパティ」用 */
+    margin: 0 0 5px;
+    padding: 0;
+    display: flex; /* 横並びにする */
+    justify-content: flex-end; /* 右寄せにする（配下のブロックたちを） */
+}
+footer a,
+footer a:link,
+footer a:visited
+/*footer ul li a,
+footer ul li a:link,
+footer ul li a:visited*/ {
+    text-decoration: none;
+    /* font-size: 13px; */
+    color: #CFBAAF; /* c9ac9c */
+    /* transition: 0.6s linear;    変化時のアニメーション */
+}
+footer a:hover
+/*footer ul li a:hover*/ {
+    color: #888;
+    /*なぜか効かない transform: translate(0,-5px); 少し上に移動 rotate(180deg)：反転;*/
+}
+footer > ul li {
+    margin: 0 0 0 20px;
+    font-size: 13px;
+}
+
+footer .copyright {
+    margin: 0;
+    text-align: right;
+    color: #888;
+}
+
+/* main 全ページ共通 */
+main {
+    margin-top: 58px;   /* トップバーの高さ */
+}
+main .inner {
+    width: 990px;
+    margin: 50px auto;  /* 左右のマージンを auto にすることでセンタリングされる */
+}
+main h2 {
+    margin: 10px 0 20px; /* 50px 0 20px */
+    font-weight: normal;
+    font-size: 28px;
+    color: #250d00;
+}
+main p {
+    margin: 0 0 15px;
+}
+main .to_top img {  /* トップへスクロールする矢印画像 */
+    z-index: 95;
+    width: 48px;
+    position: fixed;    /* ブラウザ画面の絶対位置指定とする */
+    bottom: 50px;
+    right: 50px;
+    opacity: 0.5;   /* 画像の透明度 */
+}
+main .to_top:hover img {  /* トップへスクロール */
+    opacity: 0.9;   /* 画像の透明度 */
+    transform: scale(1.1);  /* アイコンを少し大きくする */
+}
+main section {
+    display: flex; /* 要素を横並びに */
+    justify-content: space-between;
+    margin-top: 40px;/**/
+}
+main section > p {
+    max-width: 60%;
+    min-width: 40%;
+}
+main section div h2 {
+    border-top: solid 3px #250d00; /* 上部に下線 */
+    padding: 0 40px 0 0;
+}
+main section img {
+    box-sizing: border-box; /* width/height:の値にpadding/borderの値を含める */
+    width: 100% ;
+    height: 100% ;
+    /*min-width: 30%;  効かない -> display: flex の直下の要素で指定 */
+    /*margin: 10px 20px;*/
+    /* padding: 10px 0px; */
+}
+/*main section:first-child {*/
+main section:nth-child(even) { /* odd奇数 even偶数 */
+    flex-direction: row-reverse;
+}
+main section:nth-child(even) .section_img { /* odd奇数 even偶数 */
+    padding: 10px 40px 10px 0;
+}
+main section:nth-child(odd) .section_img { /* odd奇数 even偶数 */
+    padding: 10px 0 10px 40px;
+}
+.section_img {
+    /*min-width: 40%;*/
+    max-width: 55%;
+    /*height: 100%; */
+}
+/*main section:first-child div {*/
+/*main section:nth-child(even) > div {
+    padding: 0 0 0 40px;
+}*/
+main .subtitle {
+    min-width: 40%;
+}
+main .setsumei {
+    margin: 0 15% 0 15%; /* 0 20px 0 15% 左右に余白を作る */
+}
+main .setsumei p {
+    margin: 0 0 10px 0;  /* 詳細へのリンク業との間が空きすぎるので、全体の指定を上書き */
+}
+main .setsumei img {
+    display: none;  /* PCでは非表示。スマホで表示（block で表示）*/
+}
+
+
+@media screen and (max-width:1050px) { /* 767px -> .innerのwidthに合わせる。padding含むので＋αしてる */
+    main h2 {
+        /* margin: 0px 0 15px; 40px 0 15px */
+        font-size: 25px;
+    }
+    main .inner {
+        width: 100%;        /* contentの幅。padding,borderを含めると画面からはみ出る */
+        padding: 0 20px;    /* 上下０左右２０ */
+        box-sizing: border-box; /* contentだけでなく、padding含めて画面幅に収める */
+    }
+}
+@media screen and (max-width:900px) {
+    main {
+        margin-top: 130px;   /* トップバーの高さ */
+    }
+}
+@media screen and (max-width:550px) {
+    main section {
+        display: block;
+    }
+    main section div,
+    main section:first-child div {
+        padding: 0;
+    }
+    .section_img {
+        display: none;  /* PCでは非表示。スマホで表示（none で非表示）*/
+    }
+    main .setsumei img {
+        display: block;  /* PCでは非表示。スマホで表示（none で非表示）*/
+        padding: 0 0 20px 0;
+    }
+}
+
+/* 全サブページ（トップページ以外）共通 */
+main .title {
+    /*padding: 30px;*/
+    /*margin-top: 100px;*/
+    background: #705343;    /* パンくずリストの背景色 */
+}
+main .title h1 {
+    margin: 0;
+    line-height: 1;
+    font-size: 40px;
+    color: #250d00;
+}
+main .title ol {
+    list-style-type: none;
+    margin: 0 0 0 10px; /* 10px 0 0 */
+    padding: 0;
+    display: flex;
+}
+main .title ol li {
+    font-family: sans-serif;
+    font-size: 13px;
+    color: #CFBAAF; /* #c9ac9c */
+}
+main .title ol li::after {
+    content: ">";
+    margin: 0 5px 0 10px;
+}
+main .title ol li:last-child::after {
+    content: none;
+}
+main .title a,
+main .title a:link,
+main .title a:visited {
+    color: #CFBAAF;    /*  */
+}
+main .title img {
+    /* box-sizing: border-box; height:の値にpaddingの値を含める（？） */
+    object-fit: cover; /* cover:サイズを埋めるよう拡大縮小される contain:縮小して全体を表示 none:拡大縮小しない */
+    /* object-position: center; centerがデフォルトかも */
+    width: 100%;
+    height: 300px;
+}
+/* 画像に文字を重ねる 参考： https://dominantmotion.com/design/html-css/image-text/ */
+.kasaneru{
+	/*position: relative;親要素にrelative*/
+}
+.kasaneru p{
+    position: absolute; /* 重ねたい子要素にabsolute */
+	top: 230px;
+	left: 50%;
+	-ms-transform: translate(-50%,-50%);/*ベンダープレフィックス*/
+	-webkit-transform: translate(-50%,-50%);/*ベンダープレフィックス*/
+	transform: translate(-50%,-50%);/*センター寄せの修正*/
+	color: #250d00;
+	font-size: 40px; /* 1.8rem */
+    font-weight: bold;
+	margin: 0!important;/*文字がずれている場合や*/
+	padding: 0!important;/*文字が折り返される場合*/
+}
+/*.subject {
+    display: flex;
+}
+.subject h2 {
+	position: absolute; 重ねたい子要素にabsolute
+	position: relative; 親要素にrelative
+} */
+.subject img {
+	/* position: absolute; 重ねたい子要素にabsolute */
+	position: relative; /* 親要素にrelative */
+}
+
+/* home -- トップページ専用 */
+main .visual {
+    background: url(../images/onsen_ao_1600x640.jpg) no-repeat center top; /* 上を起点にして左右centerに配置 */
+    /*height: 640px; /* visual エリアの高さ・・・画像の方が大きいと画像が切られる */
+    background-size: cover; /* 領域内を覆うようにサイズ変更 */
+    background-position: center;
+    padding: 100px 0 0 100px;    /* 下paddingを入れるとその分画像領域が広がる（元は50pxだった）。が、写真説明文の場所が宙に浮く */
+    box-sizing: border-box; /* height:の値にpaddingの値を含める（？） */
+}
+main .visual img {
+    max-height: 250px;
+    max-width: 100%;
+}
+main .visual p {
+    /*position: absolute;
+    bottom: -220px;
+    right: 10px;*/
+    text-align: end;
+    color: #fff;
+}
+
+main .to_detail,
+main .to_detail:link,
+main .to_detail:visited {
+    font-size: 18px;
+    color: #87573E;
+    text-decoration:underline;
+
+    display: block;
+    text-align: right;   /* 右寄せにするには、display: block; とセットで使う必要ある */
+    transition: 0.4s linear;    /* 変化時のアニメーション */
+}
+main .to_detail:hover {
+    color: #888;
+    transform: translate(0,-5px); /* 少し上に移動 rotate(180deg)：反転;*/
+}
+main .to_detail::before {
+    content:"▶";    /* "▶"は環境依存文字のため、画像に差し替えたい */
+}
+.smallphoto {
+    display: flex; /* 要素を横並びに */
+    justify-content: flex-end; /*    flex-start：左寄せ（デフォルト）
+                                    flex-end：右寄せ
+                                    center： 中央寄せ
+                                    space-between：残り余白の均等割り 
+                                    space-around：左右余白 ＋ 均等割り    */
+    margin-top: 2.5rem;
+}
+.smallphoto img {
+    /*width: auto;*/
+    /*margin: 20px 0 0 0;
+    padding: 20px 0 0 0;*/
+    /*height: 180px ;  max-heightにしないと、幅の小さい端末で上下に余白できる */
+    max-height: 180px ; /*  */
+    object-fit: contain; /* contain:縮小して枠に収める cover:拡大して枠に収める */
+}
+main #announce {
+    margin-bottom: 7.0em;
+}
+main #access {
+    margin-bottom: 7.0em;
+}
+main .oshirase {
+    margin: 0 0 0 5%;
+    width: 95%;
+}
+main .oshirase dt {
+    float: left; /* 左に浮遊させることで dd コンテンツを右に回り込ませる★最近はFlexboxを使うのでfloatを使う機会は減ったとのこと。この場合もFlexboxの方がよさそう（わざわざ↓で clear both するくらいなら） */
+    clear: both; /* dt 要素自体は回り込ませない */
+    padding: 10px 0; /* 上下に余白 */
+}
+main .oshirase dd {
+    border-bottom: solid 1px #ccc; /* 下部に下線 */
+    margin: 0;
+    padding: 10px 0 10px 15%;
+}
+main .oshirase dd:last-child {
+    border-bottom: none;
+}
+
+main .access_box {
+    display: flex; /* 要素を横並びに */
+}
+/*main .access_box div {
+    width: 400px ;
+}*/
+main .access_box_bun {
+    box-sizing: border-box; /* width/height:の値にpadding/borderの値を含める */
+    width: 40% ; /* 350px */    /* ブラウザの幅に合わせて変化させたいが、なぜか固定長になる */
+    padding: 0 40px 0 40px;
+}
+main .access_box_map iframe {
+    width:  500px;
+    height:  500px; 
+}
+
+@media screen and (max-width:1050px) { /* 767px -> .innerのwidthに合わせる。padding含むので＋αしてる */
+    main .visual {
+        /*background-size: cover; 領域内を覆うようにサイズ変更→通常サイズも同じにした */
+        /*height: 200px; →画像サイズにまかせることにした*/
+        padding: 40px 30px 0; /* 上　左右　下 */
+    }
+}
+@media screen and (max-width:900px) {
+    .kasaneru p {
+        top: 295px;
+    }
+}
+@media screen and (max-width:767px) {
+    main .oshirase dt {
+        float: none; /* 浮遊させ dd コンテンツを右に回り込ませるのをやめる */
+        padding: 0; /* 上下に余白 */
+    }
+    main .oshirase dd {
+        margin: 0 0 10px;
+        padding: 10px 0 10px 20px;
+    }
+    main .access_box {
+        display: block; /* inline(要素の横並び可)をやめる noneは非表示 */
+    }
+    main .access_box_bun {
+        width: 100% ; /* 350px */    /* ブラウザの幅に合わせて変化させたいが、なぜか固定長になる */
+        padding: 0 20px 0 20px;
+    }
+    main .access_box_map iframe {
+        padding: 0 20px 0 20px;
+    }
+}
+@media screen and (max-width:580px) {
+    main .access_box_map iframe {
+        box-sizing: border-box; /* contentだけでなく、padding含めて画面幅に収める */
+        width:  100%; /* 400px */
+        height: 350px;
+    }
+}
+
+/* 「お部屋」ページ ******************************************************************/
+.room_detail {
+    border-spacing: 0px;
+}
+.room_detail td {
+    padding: 0;
+    height: 10px;   /* ←効かない。なぜ？ */
+    min-width: 83px; /* こちらは効く。「電話(ご予約)」に折り返しが発生しないように設定値を決めた */
+    border-top: 2px solid #c9ac9c;
+    /* border-bottom: 2px solid #250d00;*/
+}
+.room_detail tr:last-child td {
+    border-bottom: 2px solid #c9ac9c;
+}
+
+/* 「周辺観光」ページ ******************************************************************/
+.kankou .setsumei a {
+    font-size: 18px;
+}
+.kankou .setsumei a p {
+    font-size: 11px;
+    margin-top: -8px;
+    /* padding-top: -8px; 効かないので margin を使う */
+}
+@media screen and (max-width:1050px) { 
+    .kankou .setsumei a {
+        font-size: 16px;
+    }
+}
+
+/* 「本サイトで利用している写真・アイコン」ページ ******************************************************************/
+.material table {
+    /*height: 15%;*/
+    margin: 2% 0 0 2%;
+}
+.material th {
+    text-align: right;
+    padding-right: 1rem;
+    font-weight: normal;
+    color: #444;
+}
