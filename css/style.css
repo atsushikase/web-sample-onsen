@@ -151,16 +151,23 @@ header .linkaccess {
         width: 16%;     /* １項目の幅 */
     }
 }
-/*@media screen and (max-width:605px) {
+@media screen and (max-width:500px) {
     header nav ul li {
-        width: 16%;      １項目の幅 *//*
+        width: 25%;/*      １項目の幅 */
+    }
+    header .linkannounce {
+        margin-left: 0px;
+        width: 23%;     /* １項目の幅 */
+    }
+    header .linkaccess {
+        width: 23%;     /* １項目の幅 */
     }
     header nav ul li:last-child {
-        width: 100%;     /* １項目の幅 */
+        width: 54%;     /* １項目の幅 */
         /* background: #50240d;
-        color: #ad9182; aタグが優先される *//*
+        color: #ad9182; aタグが優先される */
     }
-}*/
+}
 
 /* footer */
 footer {
@@ -175,7 +182,7 @@ footer .telme {
 }
 footer .ourname {
     /*font-family: serif; */
-    font-size: 42px;
+    font-size: 36px;
     margin-block-start: 0px;
     margin-block-end: 30px; /* paddingでもmarginでもよさそうだが*/
     /*padding: 0 0 30px 0;    /*  */
@@ -197,11 +204,13 @@ footer .address{
 footer table {
     border-spacing: 0px;
     /* border-collapse: collapse; collapse:隣接するセルの枠線を重ねる separate:枠線の間隔を空ける */
+    max-width: 60%;
 }
 footer td {
     padding: 0;
     height: 10px;   /* ←効かない。なぜ？ */
     min-width: 83px; /* こちらは効く。「電話(ご予約)」に折り返しが発生しないように設定値を決めた */
+    max-width: 50%;
 }
 /* footer dt {
     float: left; 左に浮遊させることで dd コンテンツを右に回り込ませる */
@@ -216,6 +225,7 @@ footer dd {
 footer .sns{
     /*justify-content: center;  ←効かない　　配置を真ん中に */
     margin: 0px auto;  /* 左右のマージンを auto にすることでセンタリングされる */
+    min-width: 115px;
 }
 footer .sns img {
     width: 24px;
@@ -254,11 +264,31 @@ footer > ul li {
     margin: 0 0 0 20px;
     font-size: 13px;
 }
-
 footer .copyright {
     margin: 0;
     text-align: right;
     color: #888;
+}
+@media screen and (max-width:910px) {
+    footer .ourname {
+        font-size: 34px;
+    }
+}  
+@media screen and (max-width:465px) {
+    footer .ourname {
+        font-size: 32px;
+    }
+    footer .footer_contents {
+        flex-direction: column; /* 縦並びにする */
+        /* margin-block-end: 220px; paddingでもmarginでもよさそうだが*/
+        /*padding: 0 0 30px 0;    /*  */
+        /*margin: 0 0 30px 0;     /*  */
+    }
+    footer .address{
+        margin: 0 0 0 0;
+        padding: 20px;
+        width: 70%;
+    }
 }
 
 /* main 全ページ共通 */
@@ -342,7 +372,6 @@ main .setsumei p {
 main .setsumei img {
     display: none;  /* PCでは非表示。スマホで表示（block で表示）*/
 }
-
 
 @media screen and (max-width:1050px) { /* 767px -> .innerのwidthに合わせる。padding含むので＋αしてる */
     main h2 {
@@ -435,6 +464,15 @@ main .title img {
     font-weight: bold;
 	margin: 0!important;/*文字がずれている場合や*/
 	padding: 0!important;/*文字が折り返される場合*/
+
+    width: 100%;
+    text-align: center;
+
+    color: white; 
+    text-shadow:
+        2px 2px 4px black, /* offset-x | offset-y | blur-radius | color */
+        0 0 1em #250d00,
+        0 0 0.2em #543625;
 }
 /*.subject {
     display: flex;
@@ -600,15 +638,25 @@ main .access_box_map iframe {
 }
 
 /* 「周辺観光」ページ ******************************************************************/
-.kankou .setsumei a {
-    font-size: 18px;
+/*.kankou .setsumei a {*/
+.kankou .to_detail,
+.kankou .to_detail:link,
+.kankou .to_detail:visited {
+    font-size: 14px;
+    text-align: center;
 }
-.kankou .setsumei a p {
-    font-size: 11px;
+.kankou .to_detail p {
+    font-size: 10px;
     margin-top: -8px;
     /* padding-top: -8px; 効かないので margin を使う */
 }
+
 @media screen and (max-width:1050px) { 
+    .kankou .setsumei a {
+        font-size: 16px;
+    }
+}
+@media screen and (max-width:430px) { 
     .kankou .setsumei a {
         font-size: 16px;
     }
